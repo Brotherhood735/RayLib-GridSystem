@@ -134,9 +134,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Other Projects\\RayLib\\Example Project\\ExampleProject\\RayLib-GridSystem\\ConsoleApp1\\ConsoleApp1.csproj",
-      "projectName": "ConsoleApp1",
-      "projectPath": "D:\\Other Projects\\RayLib\\Example Project\\ExampleProject\\RayLib-GridSystem\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectUniqueName": "D:\\Other Projects\\RayLib\\Example Project\\ExampleProject\\RayLib-GridSystem\\ConsoleApp1\\Grid System.csproj",
+      "projectName": "Grid System",
+      "projectPath": "D:\\Other Projects\\RayLib\\Example Project\\ExampleProject\\RayLib-GridSystem\\ConsoleApp1\\Grid System.csproj",
       "packagesPath": "C:\\Users\\Harji\\.nuget\\packages\\",
       "outputPath": "D:\\Other Projects\\RayLib\\Example Project\\ExampleProject\\RayLib-GridSystem\\ConsoleApp1\\obj\\",
       "projectStyle": "PackageReference",

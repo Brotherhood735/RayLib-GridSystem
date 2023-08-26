@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "4it3PMta4XYTjSZGz2aIBRzAZHtvFwEofAPRBXWignenobM1sBGRH7SbP5NZdSCEdg0hWEw55tqPL1cU/pI7UQ==",
+  "success": true,
+  "projectFilePath": "D:\\Other Projects\\RayLib\\Example Project\\ExampleProject\\RayLib-GridSystem\\ConsoleApp1\\ConsoleApp1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Harji\\.nuget\\packages\\raylib-cs\\4.5.0.4\\raylib-cs.4.5.0.4.nupkg.sha512",
+    "C:\\Users\\Harji\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

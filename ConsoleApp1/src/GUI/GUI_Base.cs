@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1.src.GUI
+namespace GridSystem.src.GUI
 {
     abstract internal class GUI_Base
     {

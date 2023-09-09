@@ -1,4 +1,4 @@
-﻿using ConsoleApp1.src;
+﻿using GridSystem.src;
 using Raylib_cs;
 namespace HelloWorld
 {
@@ -13,17 +13,18 @@ namespace HelloWorld
             Raylib.InitWindow(WIDTH, HEIGHT, "Hello World");
             Texture2D tex = Raylib.LoadTexture("D:\\Other Projects\\RayLib\\Example Project\\ExampleProject\\RayLib-GridSystem\\ConsoleApp1\\res\\sprites\\Revolver cocked New.png");
             Raylib.SetTargetFPS(60);
-            var gridSystem = new GridSystem(2,2);
+            var grid = new Grid(2,2);
 
-            //gridSystem.AddLabel("My name is kiaro capo", 40, Color.BLACK);
-            gridSystem.AddTexture2D(tex, Color.WHITE);
-            gridSystem.AddLabel("Karandeep", 30, Color.BLACK);
-            gridSystem.AddLabel("Singh", 30, Color.BLACK);
+            //grid.AddTexture2D(tex, Color.WHITE);
+            grid.AddLabel("Test Text 1", 30, Color.BLACK);
+            grid.AddLabel("Test Text 2", 30, Color.BLACK);
+            grid.AddLabel("Test Text 2", 30, Color.BLACK);
+            grid.AddLabel("Test Text 2", 30, Color.BLACK);
             while (!Raylib.WindowShouldClose())
             {
                 Raylib.BeginDrawing();
                 Raylib.ClearBackground(Color.WHITE);
-                gridSystem.Draw();
+                grid.Draw();
                 //Raylib.DrawText("Hello, world!", 12, 12, 20, Color.BLACK);
                 //Raylib.DrawText($"FPS: {Raylib.GetFPS()}", 122, 48, 20, Color.BLACK);
                 //Raylib.DrawTexture(tex, 0, 0, Color.WHITE);

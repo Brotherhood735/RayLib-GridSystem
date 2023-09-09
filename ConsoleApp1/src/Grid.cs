@@ -1,4 +1,4 @@
-﻿using ConsoleApp1.src.GUI;
+﻿using GridSystem.src.GUI;
 using Raylib_cs;
 using System;
 using System.Collections.Generic;
@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1.src
+namespace GridSystem.src
 {
-    internal class GridSystem
+    public class Grid
     {
         private List<GUI_Base> m_Elements = new();
         private int m_Columns;
@@ -17,7 +17,7 @@ namespace ConsoleApp1.src
         public int columns { get { return m_Columns; } }
         public int rows { get { return m_Rows; } }
 
-        public GridSystem(int maxColumns, int maxRows) 
+        public Grid(int maxColumns, int maxRows) 
         {
             m_Columns = maxColumns;
             m_Rows = maxRows;
@@ -65,17 +65,16 @@ namespace ConsoleApp1.src
                 //column counter
                 if (curCol >= m_Columns)
                 {
-                    //go to the new line
+                    //go to the new Row
                     curCol = 1;
                     curRow++;
                     posX = 0;
                     posY += element.height;
+                    continue;
                 }
-                else
-                {
-                    curCol++;
-                    posX += element.width;
-                }
+                //go to the new Column
+                curCol++;
+                posX += element.width;
             }
         }
     }

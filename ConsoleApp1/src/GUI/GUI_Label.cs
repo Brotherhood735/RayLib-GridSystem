@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1.src.GUI
+namespace GridSystem.src.GUI
 {
     internal class GUI_Label : GUI_Base
     {
@@ -22,10 +22,9 @@ namespace ConsoleApp1.src.GUI
         {
             m_Text = text;
             m_Size = size;
-            //we treat the length of the text as the width of the element
-            var width = text.Length;
-            //we treat the size as it's height
-            Init(width * size, size);
+            var width = Raylib.MeasureText(text, size);
+            //for now the 5 is the padding will add this feature later on
+            Init(width + 5, size);
             m_Color = color;
         }
         public override void Draw(int posX, int posY)

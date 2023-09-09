@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace ConsoleApp1.src.GUI
+namespace GridSystem.src.GUI
 {
     internal class GUI_Texture2D : GUI_Base
     {

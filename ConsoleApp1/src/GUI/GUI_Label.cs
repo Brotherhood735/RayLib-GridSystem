@@ -25,7 +25,7 @@ namespace ConsoleApp1.src.GUI
             //we treat the length of the text as the width of the element
             var width = text.Length;
             //we treat the size as it's height
-            Init(width * (size/2), size);
+            Init(width * size, size);
             m_Color = color;
         }
         public override void Draw(int posX, int posY)

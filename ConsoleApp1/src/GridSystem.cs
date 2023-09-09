@@ -13,7 +13,7 @@ namespace ConsoleApp1.src
         private List<GUI_Base> m_Elements = new();
         private int m_Columns;
         private int m_Rows;
-
+        private int m_MaxElements;
         public int columns { get { return m_Columns; } }
         public int rows { get { return m_Rows; } }
 
@@ -21,6 +21,7 @@ namespace ConsoleApp1.src
         {
             m_Columns = maxColumns;
             m_Rows = maxRows;
+            m_MaxElements = m_Columns * m_Rows;
         }
         
         public void AddLabel(string text, int size, Color color)
@@ -28,13 +29,22 @@ namespace ConsoleApp1.src
             Guid guid = Guid.NewGuid();
             var str = guid.ToString();
             var element = new GUI_Label(str, text, size, color);
-            m_Elements.Add(element);
+            AddElement(element);
         }
         public void AddTexture2D(Texture2D tex, Color tint)
         {
             Guid guid = Guid.NewGuid();
             var str = guid.ToString();
             var element = new GUI_Texture2D(str, tex, tint);
+            AddElement(element);
+        }
+        private void AddElement(GUI_Base element)
+        {
+            if (m_Elements.Count >= m_MaxElements)
+            {
+                Console.WriteLine("Grid System Elements Limit reached!!!");
+                return;
+            }
             m_Elements.Add(element);
         }
         public void Draw()
@@ -53,19 +63,18 @@ namespace ConsoleApp1.src
             {
                 element.Draw(posX,posY);
                 //column counter
-                if (curCol < m_Columns)
-                {
-                    curCol++;
-                    posX += element.width;
-                }
-                else
+                if (curCol >= m_Columns)
                 {
                     //go to the new line
-                    curCol = 0;
+                    curCol = 1;
                     curRow++;
                     posX = 0;
                     posY += element.height;
-                    Console.WriteLine("New Line Added");
+                }
+                else
+                {
+                    curCol++;
+                    posX += element.width;
                 }
             }
         }

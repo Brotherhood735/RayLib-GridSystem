@@ -14,13 +14,17 @@ namespace GridSystem.src
         private int m_Columns;
         private int m_Rows;
         private int m_MaxElements;
+        private int m_MaxColumnWidth = 0;
+        private int m_MaxRowHeight = 0;
+        private GridRenderType m_RenderType;
         public int columns { get { return m_Columns; } }
         public int rows { get { return m_Rows; } }
-
-        public Grid(int maxColumns, int maxRows) 
+        public int maxElements { get { return m_MaxElements; } }
+        public Grid(int maxColumns, int maxRows, GridRenderType renderType) 
         {
             m_Columns = maxColumns;
             m_Rows = maxRows;
+            m_RenderType = renderType;
             m_MaxElements = m_Columns * m_Rows;
         }
         
@@ -40,6 +44,19 @@ namespace GridSystem.src
         }
         private void AddElement(GUI_Base element)
         {
+            if (m_RenderType == GridRenderType.EqualSpaced)
+            {
+                // if we're using the equal spaced method we need to set these variables
+                // to have consistent spaces
+                if (element.width > m_MaxColumnWidth)
+                {
+                    m_MaxColumnWidth = element.width;
+                }
+                if (element.height > m_MaxRowHeight)
+                {
+                    m_MaxRowHeight = element.height;
+                }
+            }
             if (m_Elements.Count >= m_MaxElements)
             {
                 Console.WriteLine("Grid System Elements Limit reached!!!");
@@ -49,11 +66,19 @@ namespace GridSystem.src
         }
         public void Draw()
         {
-            //TODO:: redo the loop
-            /*
-             * need a max height var to not go through element above
-             * and need to re-implement the width calculation method.
-             */
+            switch (m_RenderType)
+            {
+                case GridRenderType.Compact:
+                    DrawCompact();
+                    return;
+                case GridRenderType.EqualSpaced:
+                    DrawEqualSpaced();
+                    return;
+            }
+        }
+
+        private void DrawEqualSpaced()
+        {
             int curRow = 1;
             int curCol = 1;
 
@@ -61,7 +86,33 @@ namespace GridSystem.src
             int posY = 0;
             foreach (var element in m_Elements)
             {
-                element.Draw(posX,posY);
+                element.Draw(posX, posY);
+                //column counter
+                if (curCol >= m_Columns)
+                {
+                    //go to the new Row
+                    curCol = 1;
+                    curRow++;
+                    posX = 0;
+                    posY += m_MaxRowHeight;
+                    continue;
+                }
+                //go to the new Column
+                curCol++;
+                posX += m_MaxColumnWidth;
+            }
+        }
+
+        private void DrawCompact()
+        {
+            int curRow = 1;
+            int curCol = 1;
+
+            int posX = 0;
+            int posY = 0;
+            foreach (var element in m_Elements)
+            {
+                element.Draw(posX, posY);
                 //column counter
                 if (curCol >= m_Columns)
                 {
@@ -80,3 +131,8 @@ namespace GridSystem.src
     }
 }
 
+public enum GridRenderType
+{
+    Compact = 0,
+    EqualSpaced = 1
+}

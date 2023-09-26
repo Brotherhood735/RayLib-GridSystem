@@ -13,10 +13,10 @@ namespace HelloWorld
             Raylib.InitWindow(WIDTH, HEIGHT, "Hello World");
             Texture2D tex = Raylib.LoadTexture("D:\\Other Projects\\RayLib\\Example Project\\ExampleProject\\RayLib-GridSystem\\ConsoleApp1\\res\\sprites\\Revolver cocked New.png");
             Raylib.SetTargetFPS(60);
-            var grid = new Grid(2,2);
+            var grid = new Grid(2,2, GridRenderType.Compact);
 
             //grid.AddTexture2D(tex, Color.WHITE);
-            grid.AddLabel("Test Text 1", 30, Color.BLACK);
+            grid.AddLabel("Test ", 30, Color.BLACK);
             grid.AddLabel("Test Text 2", 30, Color.BLACK);
             grid.AddLabel("Test Text 2", 30, Color.BLACK);
             grid.AddLabel("Test Text 2", 30, Color.BLACK);

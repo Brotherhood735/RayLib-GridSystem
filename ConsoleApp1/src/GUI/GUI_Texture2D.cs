@@ -27,5 +27,10 @@ namespace GridSystem.src.GUI
         {
             Raylib.DrawTexture(m_Texture, posX, posY, m_Tint);
         }
+
+        public static Texture2D OpenTexture(string path)
+        {
+            return Raylib.LoadTexture($"D:\\Other Projects\\RayLib\\Example Project\\ExampleProject\\RayLib-GridSystem\\ConsoleApp1\\res\\sprites\\{path}");
+        }
     }
 }

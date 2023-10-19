@@ -110,8 +110,18 @@ namespace GridSystem.src
 
             int posX = 0;
             int posY = 0;
-            foreach (var element in m_Elements)
+            int rowStartPosY = 0;
+            //TODO:redo the for loop
+            // ** keep in mind **
+
+            /*
+             * in compact mode we don't need a generic variable to keep note the 
+             * Y position as the element when placed need to know the height of the element
+             * above it. need to find a way to keep that height in GLOBAL POSITION.
+             */
+            for (int i = 0; i < m_Elements.Count; i++)
             {
+                var element = m_Elements[i];
                 element.Draw(posX, posY);
                 //column counter
                 if (curCol >= m_Columns)
@@ -120,9 +130,14 @@ namespace GridSystem.src
                     curCol = 1;
                     curRow++;
                     posX = 0;
-                    posY += element.height;
+                    posY = rowStartPosY;
                     continue;
                 }
+                    //use the hieght of the element in the same column.
+                if (i >= m_Columns)
+                    posY += m_Elements[i - m_Columns].height;
+                else
+                    posY += element.height;
                 //go to the new Column
                 curCol++;
                 posX += element.width;
